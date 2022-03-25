@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import Song from './components/song';
 
 const api = axios.create ({
-  baseURL :`https://gist.githubusercontent.com/aryapradipta9/0b8d0a1a113e3594d34c68c72ec32daf/raw/cb5d20b494bd2cb259d31596b9e8eea02e0f6d1e/single-sample.js`
-
+  baseURL :`https://gist.githubusercontent.com/aryapradipta9/e6492383477803b233916e01f36d5465/raw/66942c739d66d3774303f84071696aa865a07077/single-sample.json`
 })
 
 class App extends Component {
@@ -18,23 +18,9 @@ class App extends Component {
 
 render() {
   return(
-    <div className="App">
-    <div className="song-wrap">
-      <div className='image'>
-      <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b" alt="song" />
-      </div>
-      
-      <p>Bohemian Rhapsody (The Original Soundtrack)</p>
-      <p>Queen</p>
-      <p>Album</p>
-      <div className='btn-select'>
-      <button>Select</button>
-      
-       </div>
+    <div>
+      <Song/>
     </div>
-    
-   
-  </div>
   );
 }
 }
