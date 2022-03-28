@@ -1,24 +1,28 @@
 import React from "react";
+import "../App.css";
 
-function Song(){
+const Song = ({image, title, artist, album,url }) => {
     return(
-        <div className="App">
-        <div className="song-wrap">
+
+      <div className="song-box">
+          <div className="song-wrap">
           <div className='image'>
-          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b" alt="song" />
+            <img src={image} alt="song image" />
           </div>
-          
-          <p>Bohemian Rhapsody (The Original Soundtrack)</p>
-          <p>Queen</p>
-          <p>Album</p>
-          <div className='btn-select'>
-          <button>Select</button>
-          
-           </div>
+
+            <p>{title}</p>
+            <p>{artist}</p>
+            <p>{album}</p>
+            
+          <div className='btn-wrap'>
+            <button className="btn-select"> 
+              <a href = {url}>Select</a>
+            </button>
+          </div>
         </div>
         
-       
-      </div>
+      </div>  
+        
     );
-}
+};
 export default Song;

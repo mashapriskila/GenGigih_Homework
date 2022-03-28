@@ -13,11 +13,10 @@
 
 
 
-.btn-select button{
+.btn-select {
   margin-top: 10px;
-  background-color: gray;
+  background-color:green;
   border: none;
-  color: white;
   padding: 5px 5px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -34,4 +33,7 @@
  
 }
 
-
+.btn-select a {
+  text-decoration: none;
+  color: white;
+}
