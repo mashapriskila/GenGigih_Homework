@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import DataLoop from './components/data_song';
+//import DataLoop from './components/data_song';
+import App from "./App.js"
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataLoop/>
+    <App />
+    {/* <DataLoop/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
