@@ -1,28 +1,37 @@
-import React from "react";
-import "../App.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Btn from './btn';
+import '../../src/App.css'
 
-const Song = ({images, title, art, album,url,song_name }) => {
-    return(
+export default function Song({ imageUrl, title, artist, toggleSelect }) {
+  const [isSelected, setIsSelected] = useState(false);
 
-      <div className="song-box">
-          <div className="song-wrap">
-          <div className='image'>
-            <img src={images} alt="song-img" />
-          </div>
+  const handleToggleSelect = () => {
+    setIsSelected(!isSelected);
+    toggleSelect();
+  }
 
-            <p>{title}</p>
-            <p>{art}</p>
-            <p>{song_name}</p>
-            
-          <div className='btn-wrap'>
-            <button className="btn-select"> 
-              <a href = {url}>Play</a>
-            </button>
-          </div>
+  return (
+    <div className="song-wrap">
+      <div className="image">
+        <img src={imageUrl} alt={title} />
+      </div>
+
+          <h3>{title}</h3>
+          <p >{artist}</p>
+    
+        
+        <div className="btn-select">
+          <Btn variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Btn>
         </div>
-        
-      </div>  
-        
-    );
-};
-export default Song;
+      </div>
+    
+  );
+}
+
+Song.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  artist: PropTypes.string.isRequired,
+  toggleSelect: PropTypes.func.isRequired,
+}

@@ -1,103 +1,109 @@
-import {useEffect, useState} from "react";
-import './App.css';
-import axios from 'axios';
-import Song from "./components/song";
+import React, { useEffect, useState } from 'react'
+import Song from './components/song';
+import Searching from './components/searching';
+import Content from './data/content';
+import Btn from './components/btn';
+import './App.css'
 
-function App() {
-    const CLIENT_ID = "f5fcff834a184b7b9677b6a602e8aae6"
-    const REDIRECT_URI = "http://localhost:3000"
-    const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-    const RESPONSE_TYPE = "token"
+export default function Home() {
+  const [accessToken, setAccessToken] = useState('');
+  const [isAuthorize, setIsAuthorize] = useState(false);
+  const [tracks, setTracks] = useState([]);
+  const [selectedTracksUri, setSelectedTracksUri] = useState([]);
+  const [isInSearch, setIsInSearch] = useState(false);
 
-    const [token, setToken] = useState("")
-    const [searchKey, setSearchKey] = useState("")
-    const [artists, setArtists] = useState([])
+  useEffect(() => {
+    const accessToken = new URLSearchParams(window.location.hash).get('#access_token');
 
+    setAccessToken(accessToken);
+    setIsAuthorize(accessToken !== null);
+  }, []);
+
+  useEffect(() => {
+    if (!isInSearch) {
+      const selectedTracks = filterSelectedTracks();
+
+      setTracks(selectedTracks);
+    }
+  }, [selectedTracksUri]);
+
+  const getSpotifyLinkAuthorize = () => {
+    const state = Date.now().toString();
+    const clientId = "f5fcff834a184b7b9677b6a602e8aae6";
+
+    return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${Content.SPOTIFY_SCOPE}`;
+  }
+
+  const filterSelectedTracks = () => {
+    return tracks.filter((track) => selectedTracksUri.includes(track.uri));
+  }
+
+  const onSuccessSearch = (searchTracks) => {
+    setIsInSearch(true);
+    const selectedTracks = filterSelectedTracks();
+    const searchDistincTracks = searchTracks.filter((track) => !selectedTracksUri.includes(track.uri));
+
+    setTracks([...selectedTracks, ...searchDistincTracks]);
+  }
+
+
+  const clearSearch = () => {
+    const selectedTracks = filterSelectedTracks();
     
-
-    useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
-
-        // getToken()
+    setTracks(selectedTracks);
+    setIsInSearch(false);
+  }
 
 
-        if (!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+  const toggleSelect = (track) => {
+    const uri = track.uri;
 
-            window.location.hash = ""
-            window.localStorage.setItem("token", token)
-        }
-
-        setToken(token)
-
-    }, [])
-
-    const logout = () => {
-        setToken("")
-        window.localStorage.removeItem("token")
+    if (selectedTracksUri.includes(uri)) {
+      setSelectedTracksUri(selectedTracksUri.filter((item) => item !== uri));
+    } else {
+      setSelectedTracksUri([...selectedTracksUri, uri]);
     }
+  }
 
-    const searchArtists = async (e) => {
-        e.preventDefault()
-        const {data} = await axios.get("https://api.spotify.com/v1/search", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            params: {
-                q: searchKey,
-                type: "artist"
-            }
-        })
+  return (
+    <>
+      <div className='front'>
+          {!isAuthorize && (
+            <main>
+              <h1>Spotify</h1>
+              <Btn href={getSpotifyLinkAuthorize()}>Login to Spotify</Btn>
+            </main>
+          )}
+      </div>
+      
 
-        setArtists(data.artists.items)
-    }
+      {isAuthorize && (
+        <main id="home">
+          <Searching
+            accessToken={accessToken}
+            onSuccess={(tracks) => onSuccessSearch(tracks)}
+            onClearSearch={clearSearch}
+          />
 
-    const renderArtists = () => {
-        return artists.map(artist => (
+          <div>
+            {tracks.length === 0 && (
+              <p></p>
+            )}
+
             <div>
-                
-                <Song 
-                    key={artist.id}
-                    images = {artist.images.length ? <img width={"50%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
-                    //images = {artist.images[0].url} 
-                    art = {artist.name}
-                    url = {artist.url}
+              {tracks.map((track) => (
+                <Song
+                  key={track.id}
+                  imageUrl={track.album.images[0].url}
+                  title={track.name}
+                  artist={track.artists[0].name}
+                  toggleSelect={() => toggleSelect(track)}
                 />
-                
-
+              ))}
             </div>
-            
-        ))
-    }
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                
-                <div className="login">
-                    {token ?
-                        <form onSubmit={searchArtists}>
-                            <input type="text" placeholder="Search Artist or songs" onChange={e => setSearchKey(e.target.value)}/>
-                            <button type={"submit"}>Search</button>
-                        </form>
-
-                        : <h2>Please login</h2>
-                    }
-                </div>
-                {renderArtists()}
-                
-                <div className="logout">
-                    {!token ?
-                        <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
-                            to Spotify</a>
-                        : <button onClick={logout}>Logout</button>}
-                </div>
-            </header>
-         
-        </div>
-        
-    );
+          </div>
+        </main>
+      )}
+    </>
+  );
 }
-
-export default App;

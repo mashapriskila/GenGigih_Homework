@@ -7,8 +7,10 @@ import App from "./App.js"
 
 ReactDOM.render(
   <React.StrictMode>
+   
     <App />
-    {/* <DataLoop/> */}
+  
+  
   </React.StrictMode>,
   document.getElementById('root')
 );

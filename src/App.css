@@ -35,9 +35,11 @@ body {
  
 }
 
-.btn-select a {
+.btn-select button{
   text-decoration: none;
   color: white;
+  background-color: green;
+  border: none;
 }
 
 .App-header input {
@@ -49,7 +51,7 @@ body {
   padding: 0px 10px ;
 }
 
-.login button, .logout button{
+.login button, .logout button, .App-header button {
   background-color: green;
   border: 3px solid green;
   height: 45px;
@@ -62,4 +64,23 @@ body {
 
 .logout button {
   float: right;
+}
+
+.clear button {
+  background-color: green;
+  border: 3px solid green;
+  height: 30px;
+  width: 100px;
+  border-radius: 50px;
+  padding: 0px 10px ;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.front {
+  font-size: larger;
+  color: white;
+  text-align: center;
 }
