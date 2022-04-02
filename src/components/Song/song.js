@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Btn from './btn';
-import '../../src/App.css'
+import Btn from '../Button/btn.js';
+import '../../App.css';
 
 export default function Song({ imageUrl, title, artist, toggleSelect }) {
   const [isSelected, setIsSelected] = useState(false);

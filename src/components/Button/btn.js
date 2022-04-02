@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import "../App.css"
+import "../../App.css"
 
 export default function Btn ({ children, type, variant, className, onClick, href }) {
   const classButton = ['btn']

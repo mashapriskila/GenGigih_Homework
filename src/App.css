@@ -51,7 +51,8 @@ body {
   padding: 0px 10px ;
 }
 
-.login button, .logout button, .App-header button {
+.login button, .logout button, .App-header button 
+ {
   background-color: green;
   border: 3px solid green;
   height: 45px;
@@ -83,4 +84,22 @@ body {
   font-size: larger;
   color: white;
   text-align: center;
+}
+
+.playlist-title {
+  color: white;
+}
+ 
+
+.playlist-title button {
+  background-color: green;
+  border: 3px solid green;
+  height: 30px;
+  width: 150px;
+  border-radius: 50px;
+  padding: 0px 10px ;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

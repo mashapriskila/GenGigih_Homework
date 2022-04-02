@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './App.css';
 //import DataLoop from './components/data_song';
 import App from "./App.js"
+import { ToastContainer } from 'react-toastify';
 
 
 ReactDOM.render(
   <React.StrictMode>
    
     <App />
+    <ToastContainer />
   
   
   </React.StrictMode>,

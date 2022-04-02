@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Btn from './btn';
+import Btn from '../Button/btn';
 import PropTypes from 'prop-types';
-import Content from '../data/content';
-import "../App.css"
+import Content from '../../data/content';
+import "../../App.css";
 
 export default function Searching({ accessToken, onSuccess, onClearSearch }) {
 
