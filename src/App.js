@@ -3,33 +3,38 @@ import Song from './components/Song/song';
 import Searching from './components/Search/searching';
 import Content from './data/content';
 import Btn from './components/Button/btn';
-import './App.css'
-import Play from './components/Playlist/play.js'
 import { getUserProfile } from './data/data_API'
 import { toast } from 'react-toastify';
+import CreatePlaylistForm from './components/Playlist/play.js';
+import { useDocumentTitle } from './Hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from './components/Access_Token/access-slice.';
+import './App.css';
+
 
 
 export default function Home() {
-  const [accessToken, setAccessToken] = useState('');
-  const [isAuthorize, setIsAuthorize] = useState(false);
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
-  const [isInSearch, setIsInSearch] = useState(false);
   const [selectedTracks, setSelectedTracks] = useState([]);
-  const [user, setUser] = useState({});
+  const [isInSearch, setIsInSearch] = useState(false);
+  const isAuthorize = useSelector((state) => state.auth.isAuthorize);
+  const dispatch = useDispatch();
+
+  useDocumentTitle('Home - Spotipy');
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
 
     if (accessTokenParams !== null) {
-      setAccessToken(accessTokenParams);
-      setIsAuthorize(accessTokenParams !== null);
-
       const setUserProfile = async () => {
         try {
-          const response = await getUserProfile(accessTokenParams);
+          const responseUser = await getUserProfile(accessTokenParams);
 
-          setUser(response);
+          dispatch(login({
+            accessToken: accessTokenParams,
+            user: responseUser
+          }));
         } catch (e) {
           toast.error(e);
         }
@@ -84,34 +89,29 @@ export default function Home() {
 
   return (
     <>
-      <div className='front'>
           {!isAuthorize && (
-            <main>
-              <h1>Spotify</h1>
-              <Btn href={getSpotifyLinkAuthorize()}>Login to Spotify</Btn>
-            </main>
-          )}
-      </div>
-      
+        <main className="center">
+          <p>Login for next step...</p>
+          <Btn href={getSpotifyLinkAuthorize()}>Authorize</Btn>
+        </main>
+      )}
 
       {isAuthorize && (
-        <main id="home">
-          <Play
-            accessToken={accessToken}
-            userId={user.id}
-            uriTracks={selectedTracksUri}
-          
-          />
+        <main className="container" id="home">
+          <CreatePlaylistForm uriTracks={selectedTracksUri} />
+
+          <hr />
+
           
           <Searching
             accessToken={accessToken}
-            onSuccess={(tracks) => onSuccessSearch(tracks)}
+            onSuccess={onSuccessSearch}
             onClearSearch={clearSearch}
           />
 
           <div>
             {tracks.length === 0 && (
-              <p></p>
+              <p>No tracks</p>
             )}
 
             <div>

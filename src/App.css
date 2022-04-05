@@ -91,7 +91,7 @@ body {
 }
  
 
-.playlist-title button {
+.playlist-title button  {
   background-color: green;
   border: 3px solid green;
   height: 30px;
@@ -102,4 +102,38 @@ body {
   border: none;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.playlist {
+  color: white;
+}
+
+
+.playlist button {
+  background-color: green;
+  border: 3px solid green;
+  height: 30px;
+  width: 60px;
+  border-radius: 50px;
+  padding: 0px 10px ;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-form {
+  min-width: 300px;
+  width: 400px;
+  margin-top: 24px;
+  resize: none;
+}
+
+span {
+  color: red;
 }

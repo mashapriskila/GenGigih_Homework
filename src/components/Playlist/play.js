@@ -5,8 +5,14 @@ import Button from '../Button/btn';
 import Input from './input';
 import Merge from './Merge';
 import '../../App.css';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-export default function Play({ accessToken, userId, uriTracks }) {
+
+export default function CreatePlaylistForm({ uriTracks }) {
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  const userId = useSelector((state) => state.auth.user.id);
+
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -38,7 +44,7 @@ export default function Play({ accessToken, userId, uriTracks }) {
     if (form.description.length > 100) {
       setErrorForm({
         ...errorForm,
-        description: 'Description must be at least 10 characters long'
+        description: 'Description must be less than 100 characters long'
       });
       isValid = false;
     }
@@ -46,24 +52,27 @@ export default function Play({ accessToken, userId, uriTracks }) {
     return isValid;
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      try {
-        const responseCreatePlaylist = await createPlaylist(accessToken, userId, {
-          name: form.title,
-          description: form.description,
-        });
+      if (uriTracks.length > 0) {
+        try {
+          const responseCreatePlaylist = await createPlaylist(accessToken, userId, {
+            name: form.title,
+            description: form.description,
+          });
 
-        await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
+          await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
 
-        toast.success('Playlist created successfully');
+          toast.success('Playlist created successfully');
 
-        setForm({ title: '', description: '' });
-      } catch (error) {
-        toast.error(error);
+          setForm({ title: '', description: '' });
+        } catch (error) {
+          toast.error(error);
+        }
+      } else {
+        toast.error('Please select at least one track');
       }
     }
   }
@@ -73,29 +82,29 @@ export default function Play({ accessToken, userId, uriTracks }) {
       <div>
         <h2>Create Playlist</h2>
 
-        <form className="playlist-form" onSubmit={handleSubmit}>
+        <form className="playlist playlist-form" onSubmit={handleSubmit}>
           <Merge>
             <Input
               label="Title"
-              placeholder="Title of playlist"
+              placeholder="Your playlist name"
               value={form.title}
               id="title-playlist"
               name="title"
               onChange={handleChange}
               error={errorForm.title}
-              required
+              
             />
           </Merge>
           <Merge>
             <Input
               type='textarea'
               label="Description"
-              placeholder="Description of playlist"
+              placeholder="Add short description"
               value={form.description}
               id="description-playlist"
               name="description"
               onChange={handleChange}
-              required
+              
               error={errorForm.description}
             />
           </Merge>
@@ -107,4 +116,8 @@ export default function Play({ accessToken, userId, uriTracks }) {
       </div>
     </div>
   )
+}
+
+createPlaylist.propTypes = {
+  uriTracks: PropTypes.array.isRequired,
 }

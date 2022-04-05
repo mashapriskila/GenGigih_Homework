@@ -34,4 +34,5 @@ Song.propTypes = {
   title: PropTypes.string.isRequired,
   artist: PropTypes.string.isRequired,
   toggleSelect: PropTypes.func.isRequired,
+  select: PropTypes.bool.isRequired,
 }
