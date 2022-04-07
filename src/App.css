@@ -131,7 +131,7 @@ body {
   min-width: 300px;
   width: 400px;
   margin-top: 24px;
-  resize: none;
+  /* resize: none; */
 }
 
 span {

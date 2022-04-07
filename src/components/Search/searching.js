@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import "../../App.css";
 import {searchTrack} from '../../data/data_API'
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../Access_Token/access-slice.';
 
 
 export default function Searching({onSuccess, onClearSearch }) {
@@ -12,6 +13,7 @@ export default function Searching({onSuccess, onClearSearch }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [text, setText] = useState('');
   const [isClear, setIsClear] = useState(true);
+  const dispatch = useDispatch();
 
   const handleInput = (e) => {
     setText(e.target.value);
@@ -26,12 +28,16 @@ export default function Searching({onSuccess, onClearSearch }) {
        
 
       const tracks = response.tracks.items;
-      onSuccess(tracks);
+      onSuccess(tracks,text);
       setIsClear(false);
-    } catch (e) {
-      toast.error(e);
+    } catch (error) {
+      if (error.response.status === 401) {
+        dispatch(logout());
+      } else {
+      toast.error(error.message);
     }
   }
+}
 
   const handleClear = () => {
     onClearSearch();

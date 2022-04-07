@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../App.css'
+import '../../App.css';
+import PropTypes from 'prop-types';
 
 export default function Input({ label, id, onChange, type, error, value, required, className, ...props }) {
   const classInput = ['input'];
@@ -47,3 +48,22 @@ export default function Input({ label, id, onChange, type, error, value, require
     </>
   )
 }
+
+Input.defaultProps = {
+  label: null,
+  type: 'text',
+  error: null,
+  required: false,
+  className: '',
+};
+
+Input.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  error: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  className: PropTypes.string,
+};

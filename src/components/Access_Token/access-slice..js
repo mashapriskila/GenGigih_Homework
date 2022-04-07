@@ -4,18 +4,30 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     accessToken: '',
-    isAuthorize: false,
+    isAuthorized: false,
     user: {},
   },
   reducers: {
     login: (state, action) => {
       state.accessToken = action.payload.accessToken;
-      state.isAuthorize = true;
+      state.isAuthorized = true;
       state.user = action.payload.user;
-    }
+
+      localStorage.setItem('accessToken', action.payload.accessToken);
+      localStorage.setItem('expiredDate', action.payload.expiredDate);
+      localStorage.setItem('user', JSON.stringify(state.user));
+    },
+    logout: (state, _) => {
+      state.accessToken = '';
+      state.isAuthorized = false;
+      state.user = {};
+
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('expiredDate');
+    },
   }
 });
 
-export const { login } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;

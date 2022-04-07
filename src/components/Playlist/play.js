@@ -6,12 +6,14 @@ import Input from './input';
 import Merge from './Merge';
 import '../../App.css';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispach, useSelector } from 'react-redux';
+import { logout } from '../Access_Token/access-slice.';
 
 
 export default function CreatePlaylistForm({ uriTracks }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const userId = useSelector((state) => state.auth.user.id);
+  const dispatch= useDispach();
 
   const [form, setForm] = useState({
     title: '',
@@ -36,7 +38,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
     if (form.title.length < 10) {
       setErrorForm({
         ...errorForm,
-        title: 'Title must be at least 10 characters long'
+        title: 'The minimum character for the title is 10 character'
       });
       isValid = false;
     }
@@ -44,7 +46,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
     if (form.description.length > 100) {
       setErrorForm({
         ...errorForm,
-        description: 'Description must be less than 100 characters long'
+        description: 'The minimum character for the Description is 101 character'
       });
       isValid = false;
     }
@@ -69,8 +71,12 @@ export default function CreatePlaylistForm({ uriTracks }) {
 
           setForm({ title: '', description: '' });
         } catch (error) {
-          toast.error(error);
+          if (error.response.status === 401) {
+            dispatch(logout());
+          } else {
+          toast.error(error.message);
         }
+      }
       } else {
         toast.error('Please select at least one track');
       }

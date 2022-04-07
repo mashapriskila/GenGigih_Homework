@@ -1,8 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import "../../App.css"
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom';
 
-export default function Btn ({ children, type, variant, className, onClick, href }) {
+export default function Btn ({ children, type, variant, className, onClick, href, external }) {
   const classButton = ['btn']
 
   
@@ -21,6 +22,16 @@ export default function Btn ({ children, type, variant, className, onClick, href
       <a href={href} className={classButton.join(' ')}>{children}</a>
     )
   }
+
+  if (external){
+    return (
+      <a href={href} className={classButton.join(' ')}>{children}</a>
+    )
+  }
+
+  return(
+    <Link to={href} className={classButton.join(' ')} >{children}</Link>
+  )
 
   return (
     <button type={type} className={classButton.join(' ')} onClick={onClick}>{children}</button>

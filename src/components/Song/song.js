@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Btn from '../Button/btn.js';
 import '../../App.css';
 
-export default function Song({ imageUrl, title, artist, toggleSelect }) {
-  const [isSelected, setIsSelected] = useState(false);
+export default function Song({ imageUrl, title, artist, select, toggleSelect }) {
+  const [isSelected, setIsSelected] = useState(select);
 
   const handleToggleSelect = () => {
     setIsSelected(!isSelected);
