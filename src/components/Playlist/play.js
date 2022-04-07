@@ -6,14 +6,14 @@ import Input from './input';
 import Merge from './Merge';
 import '../../App.css';
 import PropTypes from 'prop-types';
-import { useDispach, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Access_Token/access-slice.';
 
 
 export default function CreatePlaylistForm({ uriTracks }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const userId = useSelector((state) => state.auth.user.id);
-  const dispatch= useDispach();
+  const dispatch= useDispatch();
 
   const [form, setForm] = useState({
     title: '',

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../slice/authSlice';
-import Btn from '../Button';
-import './index.css';
+import { logout } from '../Access_Token/access-slice.';
+import Btn from '../Button/btn';
+import '../../App.css'
 
 export default function Navbar() {
   const dispatch = useDispatch();

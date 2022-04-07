@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Song from '../components/Song/song';
 import Searching from '../components/Search/searching';
 import CreatePlaylistForm from '../components/Playlist/play';
-import { useDocumentTitle } from '../lib/customHooks';
+import { useDocumentTitle } from '../data/Hooks';
 import Layout from './nav';
 
 export default function CreatePlaylist() {
