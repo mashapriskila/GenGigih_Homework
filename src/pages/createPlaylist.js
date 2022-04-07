@@ -5,7 +5,7 @@ import CreatePlaylistForm from '../components/Playlist/play';
 import { useDocumentTitle } from '../lib/customHooks';
 import Layout from './nav';
 
-export default function Home() {
+export default function CreatePlaylist() {
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
