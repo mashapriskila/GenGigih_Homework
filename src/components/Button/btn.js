@@ -1,7 +1,7 @@
 import React from 'react'
 import "../../App.css"
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Btn ({ children, type, variant, className, onClick, href, external }) {
   const classButton = ['btn']
@@ -34,7 +34,7 @@ export default function Btn ({ children, type, variant, className, onClick, href
   )
 
   return (
-    <button type={type} className={classButton.join(' ')} onClick={onClick}>{children}</button>
+    <button type={type} className={classButton.join(' ')} onClick={onClick}>{children} </button>
   )
 }
 

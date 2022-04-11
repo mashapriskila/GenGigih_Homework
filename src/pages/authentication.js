@@ -11,7 +11,7 @@ import { login } from '../components/Access_Token/access-slice.';
 export default function Auth() {
   const dispatch = useDispatch();
   const history = useHistory();
-  useDocumentTitle('Auth - Spotipy');
+  useDocumentTitle('Auth - Spotify');
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
@@ -40,8 +40,7 @@ export default function Auth() {
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
-    const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-
+    const clientId = "f5fcff834a184b7b9677b6a602e8aae6";
     return 'https://accounts.spotify.com/authorize?' + 
       `client_id=${clientId}` +
       `&response_type=token` +
@@ -52,8 +51,8 @@ export default function Auth() {
 
   return (
     <main className="center">
-      <p>Login to spotify</p>
-      <Btn href={getSpotifyLinkAuthorize()} external>Authorize</Btn>
+      <p>Spotify</p>
+      <Btn href={getSpotifyLinkAuthorize()} external>Login to spotify</Btn>
     </main>
   )
 }

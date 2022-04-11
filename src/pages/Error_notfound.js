@@ -6,8 +6,9 @@ export default function NotFound() {
   useDocumentTitle('Not Found - Spotify')
   return (
     <main className="center">
-      No Content Here...
-      <Btn href="/create-playlist">Go To Content</Btn>
+      Not Found
+      <p></p>
+      <Btn href="/create-playlist">Back to login</Btn>
     </main>
   )
 }

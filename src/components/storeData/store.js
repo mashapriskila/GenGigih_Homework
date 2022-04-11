@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authSlice } from '../Access_Token/access-slice.';
+import authReducer from '../Access_Token/access-slice.';
 
 export default configureStore({
   reducer: {
-    auth: authSlice,
+    auth: authReducer,
   }
 });
