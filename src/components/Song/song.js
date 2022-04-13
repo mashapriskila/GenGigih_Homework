@@ -16,14 +16,16 @@ export default function Song({ imageUrl, title, artist, select, toggleSelect }) 
       <div className="image">
         <img src={imageUrl} alt={title} />
       </div>
-
+      <div className='list'>
           <h3>{title}</h3>
-          <p >{artist}</p>
-    
+              <p >{artist}</p>
         
-        <div className="btn-select">
-          <Btn variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Btn>
-        </div>
+            
+            <div className="list btn-select">
+              <Btn variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Btn>
+            </div>
+          </div>
+          
       </div>
     
   );

@@ -11,9 +11,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar__nav">
        
-        <div className="navbar__menu">
+     
           <Btn onClick={() => dispatch(logout())}>Logout</Btn>
-        </div>
+  
       </div>
     </nav>
   )

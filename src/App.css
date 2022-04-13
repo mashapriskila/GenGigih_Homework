@@ -8,7 +8,7 @@ body {
   border-radius: 10px;
   background-color: #181818 ;
   color:white;
-  display:flex;
+  display:flex; 
   align-items :center;
   gap:1em;
 }
@@ -21,9 +21,11 @@ body {
   border: none;
   padding: 5px 5px;
   margin-bottom: 10px;
-  border-radius: 5px;
-  display:flex;
-  justify-content:flex-end;
+  border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-justify-items:start;
+
 }
 
 
@@ -31,16 +33,15 @@ body {
   display:flex;
   justify-content:left;
   height: 150px;
-  border-radius: 5px;
  
 }
 
-.btn-select button{
+/* .btn-select button{
   text-decoration: none;
   color: white;
   background-color: green;
   border: none;
-}
+} */
 
 .App-header input {
   margin-top: 30px;
@@ -91,7 +92,7 @@ body {
 }
  
 
-.playlist-title button  {
+/* .playlist-title button  {
   background-color: green;
   border: 3px solid green;
   height: 30px;
@@ -102,13 +103,13 @@ body {
   border: none;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+} */
 
 .playlist {
   color: white;
 }
 
-
+/* 
 .playlist button {
   background-color: green;
   border: 3px solid green;
@@ -120,7 +121,7 @@ body {
   border: none;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+} */
 
 .playlist {
   display: flex;

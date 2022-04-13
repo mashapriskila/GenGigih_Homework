@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addTracksToPlaylist, createPlaylist } from '../../data/data_API';
 import Button from '../Button/btn';
@@ -6,7 +7,6 @@ import Input from './input';
 import Merge from './Merge';
 import '../../App.css';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Access_Token/access-slice.';
 
 
@@ -92,7 +92,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
           <Merge>
             <Input
               label="Title"
-              placeholder="Your playlist name"
+              placeholder="The Title of your playlist"
               value={form.title}
               id="title-playlist"
               name="title"
@@ -105,7 +105,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
             <Input
               type='textarea'
               label="Description"
-              placeholder="Add short description"
+              placeholder="Descrive your playlist"
               value={form.description}
               id="description-playlist"
               name="description"
