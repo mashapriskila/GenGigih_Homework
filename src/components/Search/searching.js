@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Btn from '../Button/btn';
+// import Btn from '../Button/btn';
+import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import "../../App.css";
 import {searchTrack} from '../../data/data_API'
@@ -55,7 +56,10 @@ export default function Searching({onSuccess, onClearSearch }) {
           value={text}
           onChange={handleInput}
         />
-        <Btn type="submit">Search</Btn>
+        <Button variant="contained" color="success">
+          Search
+        </Button>
+        {/* <Btn type="submit">Search</Btn> */}
       </form>
 
     <div className='clear'> 
