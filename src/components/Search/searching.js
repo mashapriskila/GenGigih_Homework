@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import Btn from '../Button/btn';
-import Button from '@mui/material/Button';
+import Btn from '../Button/btn';
+// import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import "../../App.css";
 import {searchTrack} from '../../data/data_API'
@@ -55,11 +55,12 @@ export default function Searching({onSuccess, onClearSearch }) {
           required
           value={text}
           onChange={handleInput}
+          data-testid= 'seacrh-song-input'
         />
-        <Button variant="contained" color="success">
+        {/* <Button variant="contained" color="success">
           Search
-        </Button>
-        {/* <Btn type="submit">Search</Btn> */}
+        </Button> */}
+        <Btn type="submit" data-testid="search-song-button" >Search</Btn>
       </form>
 
     <div className='clear'> 

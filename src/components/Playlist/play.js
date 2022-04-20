@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addTracksToPlaylist, createPlaylist } from '../../data/data_API';
-import Button from '../Button/btn';
+import Btn from '../Button/btn';
+
 import Input from './input';
 import Merge from './Merge';
 import '../../App.css';
@@ -116,7 +117,10 @@ export default function CreatePlaylistForm({ uriTracks }) {
           </Merge>
 
           <div className="playlist-button">
-            <Button type="submit">Add</Button>
+             
+           
+            <Btn type="submit">Add</Btn>
+          
           </div>
         </form>
       </div>

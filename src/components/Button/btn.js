@@ -3,7 +3,7 @@ import "../../App.css"
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
-export default function Button ({ children, type, variant, className, onClick, href, external }) {
+export default function Btn ({ children, type, variant, className, onClick, href, external }) {
   const classButton = ['btn']
 
   
@@ -38,7 +38,7 @@ export default function Button ({ children, type, variant, className, onClick, h
   )
 }
 
-Button.defaultProps = {
+Btn.defaultProps = {
   type: 'button',
   className: '',
   variant: 'primary',
@@ -46,7 +46,7 @@ Button.defaultProps = {
   href: null,
 }
 
-Button.propTypes = {
+Btn.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string,
   className: PropTypes.string,
