@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Song from '../components/Song/song';
 import Searching from '../components/Search/searching';
 import CreatePlaylistForm from '../components/Playlist/play';
-import { useDocumentTitle } from '../data/Hooks';
+import { useDocumentTitle } from '../lib/Hooks';
 import Layout from './nav';
+import songDuration from '../lib/songduration.ts';
 
 export default function CreatePlaylist() {
   const [tracks, setTracks] = useState([]);
@@ -82,6 +83,7 @@ export default function CreatePlaylist() {
                 artist={track.artists[0].name}
                 select={selectedTracksUri.includes(track.uri)}
                 toggleSelect={() => toggleSelect(track)}
+                songDuration={songDuration(track.duration_ms)}
               />
             ))}
           </div>

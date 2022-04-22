@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../Access_Token/access-slice.';
-import Btn from '../Button/btn';
-import '../../App.css'
+import Button from '../Button/btn';
+import "./nav.css";
 
 export default function Navbar() {
   const dispatch = useDispatch();
 
   return (
     <nav className="navbar">
-      <div className="container navbar__nav">
+      <div>
        
-     
-          <Btn onClick={() => dispatch(logout())}>Logout</Btn>
+        <h1>My Muse</h1>
+          <Button className='logout' onClick={() => dispatch(logout())}>Logout</Button>
   
       </div>
     </nav>

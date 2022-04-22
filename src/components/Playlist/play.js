@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addTracksToPlaylist, createPlaylist } from '../../data/data_API';
-import Btn from '../Button/btn';
+import { addTracksToPlaylist, createPlaylist } from "../../lib/data_API";
+import Button from '../Button/btn';
 
 import Input from './input';
 import Merge from './Merge';
-import '../../App.css';
+import '../Playlist/play.css';
 import PropTypes from 'prop-types';
 import { logout } from '../Access_Token/access-slice.';
 
@@ -39,7 +39,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
     if (form.title.length < 10) {
       setErrorForm({
         ...errorForm,
-        title: 'The minimum character for the title is 10 character'
+        title: 'The title must contain with minimum of 10 characters'
       });
       isValid = false;
     }
@@ -47,7 +47,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
     if (form.description.length > 100) {
       setErrorForm({
         ...errorForm,
-        description: 'The minimum character for the Description is 101 character'
+        description: 'The maximum characters for description is 100 character'
       });
       isValid = false;
     }
@@ -68,7 +68,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
 
           await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
 
-          toast.success('Playlist created successfully');
+          toast.success('Successfully added to your playlist');
 
           setForm({ title: '', description: '' });
         } catch (error) {
@@ -79,7 +79,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
         }
       }
       } else {
-        toast.error('Please select at least one track');
+        toast.error('Select one track');
       }
     }
   }
@@ -89,11 +89,13 @@ export default function CreatePlaylistForm({ uriTracks }) {
       <div>
         <h2>Create Playlist</h2>
 
-        <form className="playlist playlist-form" onSubmit={handleSubmit}>
-          <Merge>
+        <form className="form" onSubmit={handleSubmit}>
+          <Merge className="merge">
+            <label for="title-playlist">Title</label>
+            <p></p>
             <Input
-              label="Title"
-              placeholder="The Title of your playlist"
+              // label="Title"
+              placeholder="Add Tittle of your Playlist"
               value={form.title}
               id="title-playlist"
               name="title"
@@ -102,11 +104,13 @@ export default function CreatePlaylistForm({ uriTracks }) {
               
             />
           </Merge>
-          <Merge>
+          <p></p>
+          <Merge className='merge'>
+          <label for="description-playlist">Description</label>
+          <p></p>
             <Input
               type='textarea'
-              label="Description"
-              placeholder="Descrive your playlist"
+              placeholder="Add description to your playlist"
               value={form.description}
               id="description-playlist"
               name="description"
@@ -116,12 +120,14 @@ export default function CreatePlaylistForm({ uriTracks }) {
             />
           </Merge>
 
-          <div className="playlist-button">
+         
              
-           
-            <Btn type="submit">Add</Btn>
           
-          </div>
+                <Button className='add' type="submit">Add</Button>
+          
+          
+            
+          
         </form>
       </div>
     </div>

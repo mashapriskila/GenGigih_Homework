@@ -1,47 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Damion&family=Dancing+Script&family=Dongle:wght@300&family=Gwendolyn&family=Italianno&family=Kaushan+Script&family=Molle:ital@1&family=Patua+One&family=Zen+Antique+Soft&display=swap');
+
+
 body {
   background-color: #181818;
 } 
-
-.song-wrap {
-  
-  border: 2px solid whitesmoke;
-  border-radius: 10px;
-  background-color: #181818 ;
-  color:white;
-  display:flex; 
-  align-items :center;
-  gap:1em;
-}
-
-
-
-.btn-select {
-  margin-top: 10px;
-  background-color:green;
-  border: none;
-  padding: 5px 5px;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-justify-items:start;
-
-}
-
-
-.song-wrap img{
-  display:flex;
-  justify-content:left;
-  height: 150px;
- 
-}
-
-/* .btn-select button{
-  text-decoration: none;
-  color: white;
-  background-color: green;
-  border: none;
-} */
 
 .App-header input {
   margin-top: 30px;
@@ -52,7 +14,7 @@ body {
   padding: 0px 10px ;
 }
 
-.login button, .logout button, .App-header button 
+.login button, .logout button, .App-header button
  {
   background-color: green;
   border: 3px solid green;
@@ -81,11 +43,32 @@ body {
   margin-bottom: 10px;
 }
 
-.center {
-  font-size: larger;
+.login {
+  background-color: #7846A8;
+  border: 3px solid #7846A8;
+  border-radius: 30px;
+  padding: 10px 30px ;
   color: white;
+  font-size: x-large;
   text-align: center;
+  text-decoration: none;
+} 
+
+  .center p {
+    font-family: Molle;
+    font-size: 50px;
+  } 
+.center {
+  font-size: xx-large;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
+
 
 .playlist-title {
   color: white;

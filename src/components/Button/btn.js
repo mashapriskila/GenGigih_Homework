@@ -2,8 +2,9 @@ import React from 'react'
 import "../../App.css"
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import "../Song/song.css";
 
-export default function Btn ({ children, type, variant, className, onClick, href, external }) {
+export default function Button ({ children, type, variant, className, onClick, href, external }) {
   const classButton = ['btn']
 
   
@@ -18,10 +19,10 @@ export default function Btn ({ children, type, variant, className, onClick, href
   if (href) {
     classButton.push('btn--link')
 
-    return (
-      <a href={href} className={classButton.join(' ')}>{children}</a>
-    )
-  }
+  //   return (
+  //     <a href={href} className={classButton.join(' ')}>{children}</a>
+  //   )
+  // }
 
   if (external){
     return (
@@ -32,13 +33,14 @@ export default function Btn ({ children, type, variant, className, onClick, href
   return(
     <Link to={href} className={classButton.join(' ')} >{children}</Link>
   )
+  }
 
   return (
     <button type={type} className={classButton.join(' ')} onClick={onClick}>{children} </button>
   )
 }
 
-Btn.defaultProps = {
+Button.defaultProps = {
   type: 'button',
   className: '',
   variant: 'primary',
@@ -46,7 +48,7 @@ Btn.defaultProps = {
   href: null,
 }
 
-Btn.propTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string,
   className: PropTypes.string,

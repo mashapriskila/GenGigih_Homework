@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Btn from '../Button/btn';
-// import Button from '@mui/material/Button';
+import Button from '../Button/btn';
 import PropTypes from 'prop-types';
-import "../../App.css";
-import {searchTrack} from '../../data/data_API'
+import "./search.css";
+import {searchTrack} from '../../lib/data_API'
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Access_Token/access-slice.';
@@ -51,23 +50,21 @@ export default function Searching({onSuccess, onClearSearch }) {
       <form className="App-header" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Type to search...(artist,song,album)"
+          placeholder="Type to search"
           required
           value={text}
           onChange={handleInput}
           data-testid= 'seacrh-song-input'
         />
-        {/* <Button variant="contained" color="success">
-          Search
-        </Button> */}
-        <Btn type="submit" data-testid="search-song-button" >Search</Btn>
+        
+        <Button className='song-btn' type="submit" data-testid="search-song-button" >Search</Button>
       </form>
 
-    <div className='clear'> 
+    
         {!isClear && (
-        <Btn variant="text" onClick={handleClear} className="mt-1">Clear Search</Btn>
+        <Button className='song-btn' variant="text" onClick={handleClear}>Clear Search</Button>
         )}
-    </div>
+    
       
 
       

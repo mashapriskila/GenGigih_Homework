@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Btn from '../Button/btn.js';
-import '../../App.css';
+import Button from '../Button/btn';
+import '../Song/song.css';
+// import songDuration from '../../lib/songduration.ts';
 
-export default function Song({ imageUrl, title, artist, select, toggleSelect }) {
+export default function Song({ imageUrl, title, artist, select,songDuration, toggleSelect }) {
   const [isSelected, setIsSelected] = useState(select);
 
   const handleToggleSelect = () => {
@@ -16,14 +17,14 @@ export default function Song({ imageUrl, title, artist, select, toggleSelect }) 
       <div className="image">
         <img src={imageUrl} alt={title} />
       </div>
-      <div className='list'>
+      <div>
           <h3>{title}</h3>
               <p >{artist}</p>
-        
+              <p>{songDuration}</p>
             
-            <div className="list btn-select">
-              <Btn variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Btn>
-            </div>
+            
+              <Button className='btn-select' variant={isSelected ? 'primary' : 'secondary'} onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Button>
+            
           </div>
           
       </div>

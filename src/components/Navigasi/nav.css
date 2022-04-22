@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Damion&family=Dancing+Script&family=Dongle:wght@300&family=Gwendolyn&family=Italianno&family=Kaushan+Script&family=Molle:ital@1&family=Patua+One&family=Zen+Antique+Soft&display=swap');
+
+
+.navbar {
+  display:-ms-grid ;
+  display: grid;
+  -ms-grid-columns: repeat(5, 1fr);
+  -ms-grid-rows: auto;
+  grid-gap: 1em;
+  align-items:flex-start;
+  text-align: center;
+  border-bottom: 4px solid black;
+  background-color: #8048bc;
+  color: white;
+}
+
+.navbar h1 {
+    font-family:Molle;
+    font-size: 30px;
+}
+
+
+
+.logout {
+  float: right;
+  background-color: #8048bc;
+  border: 3px solid #8048bc;
+  height: 30px;
+  width: 70px;
+  border-radius: 50px;
+  padding: 0px 10px ;
+  color: white;
+  margin-right: 20px;
+}
+
+.logout:hover {
+  background-color: #6a329f;
+  border: 3px solid #6a329f;
+  height: 30px;
+  width: 70px;
+  border-radius: 50px;
+  padding: 0px 10px ;
+  color: white;
+  margin-right: 20px;
+}

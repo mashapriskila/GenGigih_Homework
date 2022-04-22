@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
-import Btn from '../components/Button/btn';
-import Content from '../data/content';
-import { useDocumentTitle } from '../data/Hooks';
-import { getUserProfile } from '../data/data_API';
+import Button from '../components/Button/btn';
+import Content from '../lib/content';
+import { useDocumentTitle } from '../lib/Hooks';
+import { getUserProfile } from '../lib/data_API';
 import { login } from '../components/Access_Token/access-slice.';
+import "../App.css";
 
 export default function Auth() {
   const dispatch = useDispatch();
   const history = useHistory();
-  useDocumentTitle('Auth - Spotify');
+  useDocumentTitle('Login - MyMuse App');
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
@@ -51,8 +52,9 @@ export default function Auth() {
 
   return (
     <main className="center">
-      <p>Spotify</p>
-      <Btn href={getSpotifyLinkAuthorize()} external>Login to spotify</Btn>
+      <p>My Muse</p>
+      
+      <Button className='login' href={getSpotifyLinkAuthorize()} external>Log in to spotify</Button>
     </main>
   )
 }

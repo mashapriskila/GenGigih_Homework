@@ -1,0 +1,30 @@
+.song-wrap {
+  
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    background-color: #181818 ;
+    color:white;
+    display:flex; 
+    align-items :center;
+    gap:1em;
+  }
+  
+  .song-wrap img{
+    display:flex;
+    justify-content:left;
+    height: 190px;
+   
+  }
+
+  
+.btn-select {
+    margin-top: 10px;
+    background-color:#7846A8;
+    width: 80px;
+    height: 35px;
+    border: 3px solid #7846A8;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }

@@ -1,14 +1,14 @@
 import React from 'react'
-import Btn from '../components/Button/btn' 
-import { useDocumentTitle } from '../data/Hooks' 
+import Button from '../components/Button/btn' 
+import { useDocumentTitle } from '../lib/Hooks' 
 
 export default function NotFound() {
-  useDocumentTitle('Not Found - Spotify')
+  useDocumentTitle('Not Found')
   return (
     <main className="center">
       Not Found
       <p></p>
-      <Btn href="/create-playlist">Back to login</Btn>
+      <Button href="/create-playlist">Back to login</Button>
     </main>
   )
 }
