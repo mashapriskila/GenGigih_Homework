@@ -4,7 +4,7 @@
 .navbar {
   display:-ms-grid ;
   display: grid;
-  -ms-grid-columns: repeat(5, 1fr);
+  -ms-grid-columns: repeat(3, 1fr);
   -ms-grid-rows: auto;
   grid-gap: 1em;
   align-items:flex-start;

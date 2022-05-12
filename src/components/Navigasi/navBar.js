@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../Access_Token/access-slice.';
+import { logout } from '../slice/access-slice';
 import Button from '../Button/btn';
 import "./nav.css";
 

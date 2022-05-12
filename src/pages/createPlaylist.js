@@ -5,21 +5,38 @@ import CreatePlaylistForm from '../components/Playlist/play';
 import { useDocumentTitle } from '../lib/Hooks';
 import Layout from './nav';
 import songDuration from '../lib/songduration.ts';
+//import Button from '../components/Button/btn';
+import "../components/Search/search.css"
+//import { clear } from 'console';
+//import { removeAllTracks } from '../components/slice/track-slice';
+// import { useDispatch } from 'react-redux';
+//import { useAppDispatch } from '../components/store/store';
+//import { clear } from 'console';
+// import { handleToggleSelect } from '../components/Song/song';
 
 export default function CreatePlaylist() {
-  const [tracks, setTracks] = useState([]);
-  const [selectedTracksUri, setSelectedTracksUri] = useState([]);
-  const [selectedTracks, setSelectedTracks] = useState([]);
+  let [tracks, setTracks] = useState([]);
+  let [selectedTracksUri, setSelectedTracksUri] = useState([]);
+  let [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
-  const [message, setMessage] = useState('No tracks');
+  const [message, setMessage] = useState('Search to find tracks');
+  //const dispatch = useAppDispatch();
+  
 
-  useDocumentTitle('Create Playlist - Spotipy');
+  useDocumentTitle('Create Playlist - My Muse');
 
   useEffect(() => {
     if (!isInSearch) {
       setTracks(selectedTracks);
     }
-  }, [selectedTracksUri, selectedTracks, isInSearch]);
+  }, [selectedTracks, isInSearch]);
+
+  // useEffect(() => {
+  //   if (!isInSearch) {
+  //     setTracks(selectedTracks);
+  //   }
+  // }, [selectedTracks, isInSearch]);
+
 
   const onSuccessSearch = (searchTracks, query) => {
     setIsInSearch(true);
@@ -41,10 +58,15 @@ export default function CreatePlaylist() {
 
   const clearSearch = () => {
     setTracks(selectedTracks);
-    setMessage('No tracks');
+    setMessage('Search to find tracks');
     setIsInSearch(false);
   }
 
+  const removeSelected = () => {
+      setTracks([]);
+  }
+
+ 
   const toggleSelect = (track) => {
     const uri = track.uri;
 
@@ -57,38 +79,47 @@ export default function CreatePlaylist() {
     }
   }
 
-  return (
-    <Layout>
-      <main className="container" id="home">
-        <CreatePlaylistForm uriTracks={selectedTracksUri} />
 
-        <hr />
+  
+    return (
+      <Layout>
+        <main className="container" id="home">
+          <CreatePlaylistForm 
+            uriTracks={selectedTracksUri} 
+            onSuccess = {removeSelected}
+          />
 
-        <Searching
-          onSuccess={onSuccessSearch}
-          onClearSearch={clearSearch}
-        />
+          <hr />
 
-        <div className="content">
-          {tracks.length === 0 && (
-            <p>{message}</p>
-          )}
+          <Searching
+            onSuccess={onSuccessSearch}
+            onClearSearch={clearSearch} />
 
-          <div className="tracks">
-            {tracks.map((track) => (
-              <Song
-                key={track.id}
-                imageUrl={track.album.images[0].url}
-                title={track.name}
-                artist={track.artists[0].name}
-                select={selectedTracksUri.includes(track.uri)}
-                toggleSelect={() => toggleSelect(track)}
-                songDuration={songDuration(track.duration_ms)}
-              />
-            ))}
+          
+
+          <div className="content">
+            {tracks.length === 0 && (
+              <p>{message}</p>
+            )}
+
+            <div className="tracks">
+              {tracks.map((track) => (
+                <Song
+                  key={track.id}
+                  imageUrl={track.album.images[0].url}
+                  title={track.name}
+                  artist={track.artists[0].name}
+                  select={selectedTracksUri.includes(track.uri)}
+                  toggleSelect={() => toggleSelect(track)}
+                  songDuration={songDuration(track.duration_ms)} />
+              ))}
+
+              {/* {!isInSearch && tracks.length !== 0(
+                  <Button className="song-btn" variant="text" onClick={ removeSelected }>Delete Selected Track</Button>
+              )} */}
+            </div>
           </div>
-        </div>
-      </main>
-    </Layout>
-  );
-}
+        </main>
+      </Layout>
+    );
+  }

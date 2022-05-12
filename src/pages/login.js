@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import Button from '../components/Button/btn';
-import Content from '../lib/content';
+import Content from '../lib/content.ts';
 import { useDocumentTitle } from '../lib/Hooks';
 import { getUserProfile } from '../lib/data_API';
-import { login } from '../components/Access_Token/access-slice.';
+import { login } from '../components/slice/access-slice';
 import "../App.css";
 
 export default function Auth() {
@@ -41,11 +41,12 @@ export default function Auth() {
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
-    const clientId = "f5fcff834a184b7b9677b6a602e8aae6";
+     const clientId = "f5fcff834a184b7b9677b6a602e8aae6"
+    //const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
     return 'https://accounts.spotify.com/authorize?' + 
       `client_id=${clientId}` +
       `&response_type=token` +
-      `&redirect_uri=http://localhost:3000` +
+      `&redirect_uri=${Content.HOST}` +
       `&state=${state}` +
       `&scope=${Content.SPOTIFY_SCOPE}`;
   }
@@ -54,7 +55,7 @@ export default function Auth() {
     <main className="center">
       <p>My Muse</p>
       
-      <Button className='login' href={getSpotifyLinkAuthorize()} external>Log in to spotify</Button>
+      <Button className='login' href={getSpotifyLinkAuthorize()} external>Login to spotify</Button>
     </main>
   )
 }

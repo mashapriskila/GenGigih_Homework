@@ -28,3 +28,14 @@
     border-radius: 15px;
     margin-bottom: 20px;
   }
+
+.btn-select:hover {
+  margin-top: 10px;
+  background-color: #331550;
+  border: 3px solid #331550;
+  width: 80px;
+  height: 35px;
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 20px;
+}

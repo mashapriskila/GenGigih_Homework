@@ -1,8 +1,8 @@
 import './App.css';
 import CreatePlaylist from './pages/createPlaylist';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Auth from './pages/authentication';
-import GuardRoute from './components/Guard/GuardRoute';
+import Auth from './pages/login';
+import GuardRoute from './components/Routes/GuardRoute';
 import NotFound from './pages/Error_notfound';
 
 function App() {

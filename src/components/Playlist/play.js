@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { addTracksToPlaylist, createPlaylist } from "../../lib/data_API";
 import Button from '../Button/btn';
-
 import Input from './input';
 import Merge from './Merge';
 import '../Playlist/play.css';
 import PropTypes from 'prop-types';
-import { logout } from '../Access_Token/access-slice.';
+import { logout } from '../slice/access-slice';
+import { toast } from 'react-toastify';
 
 
 export default function CreatePlaylistForm({ uriTracks }) {
@@ -69,17 +68,18 @@ export default function CreatePlaylistForm({ uriTracks }) {
           await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
 
           toast.success('Successfully added to your playlist');
+          // alert ('Successfully added to your playlist');
 
           setForm({ title: '', description: '' });
         } catch (error) {
           if (error.response.status === 401) {
             dispatch(logout());
           } else {
-          toast.error(error.message);
+          alert('Error');
         }
       }
       } else {
-        toast.error('Select one track');
+        alert ('You must select one track to make playlist');
       }
     }
   }
@@ -95,7 +95,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
             <p></p>
             <Input
               // label="Title"
-              placeholder="Add Tittle of your Playlist"
+              placeholder="Add Tittle to your Playlist"
               value={form.title}
               id="title-playlist"
               name="title"

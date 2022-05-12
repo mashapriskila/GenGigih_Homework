@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import Button from '../Button/btn';
 import '../Song/song.css';
-// import songDuration from '../../lib/songduration.ts';
+
+
+
 
 export default function Song({ imageUrl, title, artist, select,songDuration, toggleSelect }) {
   const [isSelected, setIsSelected] = useState(select);
@@ -13,6 +15,7 @@ export default function Song({ imageUrl, title, artist, select,songDuration, tog
   }
 
   return (
+  
     <div className="song-wrap">
       <div className="image">
         <img src={imageUrl} alt={title} />
@@ -32,10 +35,12 @@ export default function Song({ imageUrl, title, artist, select,songDuration, tog
   );
 }
 
-Song.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  artist: PropTypes.string.isRequired,
-  toggleSelect: PropTypes.func.isRequired,
-  select: PropTypes.bool.isRequired,
-}
+// Song.propTypes = {
+//   imageUrl: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   artist: PropTypes.string.isRequired,
+//   toggleSelect: PropTypes.func.isRequired,
+//   select: PropTypes.bool.isRequired,
+// }
+
+export const { handleToggleSelect } = Array;

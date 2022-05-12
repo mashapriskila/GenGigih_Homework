@@ -1,5 +1,5 @@
 import axios from "axios";
-import Content from "./content";
+import Content from './content.ts';
 
 export const searchTrack = async (query, accessToken) => {
   const requestOptions = {
