@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
 import Button from '../components/Button/btn';
-import Content from '../lib/content.ts';
+import config from '../lib/content.ts';
 import { useDocumentTitle } from '../lib/Hooks';
 import { getUserProfile } from '../lib/data_API';
 import { login } from '../components/slice/access-slice';
@@ -46,9 +46,9 @@ export default function Auth() {
     return 'https://accounts.spotify.com/authorize?' + 
       `client_id=${clientId}` +
       `&response_type=token` +
-      `&redirect_uri=${Content.HOST}` +
+      `&redirect_uri=${config.HOST}` +
       `&state=${state}` +
-      `&scope=${Content.SPOTIFY_SCOPE}`;
+      `&scope=${config.SPOTIFY_SCOPE}`;
   }
 
   return (
