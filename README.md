@@ -6,19 +6,27 @@ MyMuse App is an application that uses Spotify Developers API to create a playli
 
 ## Features 
 •	Log in to your Spotify account
+
 •	Searchbar to for searching the tracks
+
 •	Create a playlist based on the selected tracks
+
 •	Showing track detail 
 
 ## Installation
 •	Install dependencies: npm install
+
 •	Start app: npm run start
 
 ## Stacks
 •	Create-react-app, React, Javascript, Typescript
+
 •	State management: Redux
+
 •	Styling : CSS, grid , flex
+
 •	Testing: testing-library, MSW
+
 •	Deployment: Vercel
 
 
