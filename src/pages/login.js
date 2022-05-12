@@ -41,8 +41,8 @@ export default function Auth() {
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
-     const clientId = "f5fcff834a184b7b9677b6a602e8aae6"
-    //const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+ 
+    const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
     return 'https://accounts.spotify.com/authorize?' + 
       `client_id=${clientId}` +
       `&response_type=token` +

@@ -1,4 +1,4 @@
-#MyMuse App 
+# MyMuse App 
 
 ## Description
 
@@ -21,7 +21,8 @@ MyMuse App is an application that uses Spotify Developers API to create a playli
 •	Testing: testing-library, MSW
 •	Deployment: Vercel
 
-
+## Website Project
+Link : https://mymuse-app.vercel.app/
 
 
 

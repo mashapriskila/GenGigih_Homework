@@ -1,9 +1,9 @@
 .song-wrap {
   
-    border: 2px solid whitesmoke;
+    border: 3px solid rgb(228, 227, 227);
     border-radius: 10px;
-    background-color: #181818 ;
-    color:white;
+    background-color: white;
+    color:black;
     display:flex; 
     align-items :center;
     gap:1em;
