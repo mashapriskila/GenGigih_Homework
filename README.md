@@ -2,7 +2,7 @@
 
 ## Description
 
-MyMuse App is an application that uses Spotify Developers API to create a playlist from the tracks that are selected when we are searching
+MyMuse App is an application that uses Spotify Developers API to create a playlist from the tracks that are selected when searching
 
 ## Features 
 •	Log in to your Spotify account
