@@ -5,14 +5,9 @@ import CreatePlaylistForm from '../components/Playlist/play';
 import { useDocumentTitle } from '../lib/Hooks';
 import Layout from './nav';
 import songDuration from '../lib/songduration.ts';
-//import Button from '../components/Button/btn';
 import "../components/Search/search.css"
-//import { clear } from 'console';
-//import { removeAllTracks } from '../components/slice/track-slice';
-// import { useDispatch } from 'react-redux';
-//import { useAppDispatch } from '../components/store/store';
-//import { clear } from 'console';
-// import { handleToggleSelect } from '../components/Song/song';
+//import DarkMode from '../components/DarkMode/darkmode';
+
 
 export default function CreatePlaylist() {
   let [tracks, setTracks] = useState([]);
@@ -20,7 +15,6 @@ export default function CreatePlaylist() {
   let [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
   const [message, setMessage] = useState('Search to find tracks');
-  //const dispatch = useAppDispatch();
   
 
   useDocumentTitle('Create Playlist - My Muse');
@@ -31,11 +25,7 @@ export default function CreatePlaylist() {
     }
   }, [selectedTracks, isInSearch]);
 
-  // useEffect(() => {
-  //   if (!isInSearch) {
-  //     setTracks(selectedTracks);
-  //   }
-  // }, [selectedTracks, isInSearch]);
+
 
 
   const onSuccessSearch = (searchTracks, query) => {
@@ -83,6 +73,7 @@ export default function CreatePlaylist() {
   
     return (
       <Layout>
+        {/* <DarkMode /> */}
         <main className="container" id="home">
           <CreatePlaylistForm 
             uriTracks={selectedTracksUri} 
@@ -114,9 +105,7 @@ export default function CreatePlaylist() {
                   songDuration={songDuration(track.duration_ms)} />
               ))}
 
-              {/* {!isInSearch && tracks.length !== 0(
-                  <Button className="song-btn" variant="text" onClick={ removeSelected }>Delete Selected Track</Button>
-              )} */}
+              
             </div>
           </div>
         </main>

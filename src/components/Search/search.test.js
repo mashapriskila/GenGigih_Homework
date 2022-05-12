@@ -29,7 +29,7 @@ describe('should render the search bar component', () => {
 
     it('if a user input the search bar, the button is enabled', async () => {
 
-        userEvent.type(screen.getByPlaceholderText(/Type to search/i))
+        userEvent.type(screen.getByPlaceholderText(/Type to search.../i))
         const buttonSearch = await screen.findByRole ("button",{name : /Search/i})
         
         expect(buttonSearch).toBeEnabled();

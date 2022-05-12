@@ -43,3 +43,8 @@
     color: white;
     border-radius: 30px;
 }
+
+input, textarea,.App-header input {
+    border: 3px solid #562c7d;
+}
+

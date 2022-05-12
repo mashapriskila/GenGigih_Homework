@@ -2,8 +2,8 @@
 
 
 body {
-  background-color: #181818;
-  color: white;
+  background-color: white;
+  color: black;
 } 
 
 .App-header input {
@@ -61,7 +61,7 @@ body {
   } 
 .center {
   font-size: xx-large;
-  color: white;
+  color: #7846A8;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -72,40 +72,16 @@ body {
 
 
 .playlist-title {
-  color: white;
+  color: black;
 }
  
 
-/* .playlist-title button  {
-  background-color: green;
-  border: 3px solid green;
-  height: 30px;
-  width: 150px;
-  border-radius: 50px;
-  padding: 0px 10px ;
-  color: white;
-  border: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-} */
 
 .playlist {
-  color: white;
+  color: black;
 }
 
-/* 
-.playlist button {
-  background-color: green;
-  border: 3px solid green;
-  height: 30px;
-  width: 60px;
-  border-radius: 50px;
-  padding: 0px 10px ;
-  color: white;
-  border: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-} */
+
 
 .playlist {
   display: flex;

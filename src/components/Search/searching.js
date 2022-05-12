@@ -55,18 +55,18 @@ const handleClear = () => {
       
         <input
           type="text"
-          placeholder="Type to search"
+          placeholder="Type to search..."
           required
           value={text}
           onChange={handleInput}
-          data-testid="input"
+          
         />
          
         
         <Button 
           className='song-btn' 
           type="submit"
-          data-testid="button" 
+          
         >
           Search
         </Button>
