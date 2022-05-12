@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^17.0.24",
     "axios": "^0.26.1",
+    "env-cmd": "^10.1.0",
     "eslint-plugin-react-hooks": "^4.5.0-next-aa05e7315-20220331",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
@@ -23,6 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:staging": "env-cmd -f .env.staging npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -46,7 +48,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "hint": "^6.1.10",
+    "hint": "^6.2.0",
     "typescript": "^4.6.3"
   }
 }
